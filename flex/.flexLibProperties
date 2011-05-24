@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="org.flashmonkey.model.api.IUser"/>
+    <classEntry path="org.flashmonkey.model.api.IUserModel"/>
+    <classEntry path="org.flashmonkey.model.impl.User"/>
+    <classEntry path="org.flashmonkey.service.IUserService"/>
+    <classEntry path="org.flashmonkey.model.impl.UserModel"/>
+    <classEntry path="org.flashmonkey.service.remote.RemoteUserService"/>
+    <classEntry path="org.flashmonkey.service.remote.operation.GetAuthenticationOperation"/>
+    <classEntry path="org.flashmonkey.service.remote.operation.RemoteObjectOperation"/>
+    <classEntry path="org.flashmonkey.service.remote.operation.LogoutOperation"/>
+    <classEntry path="org.flashmonkey.service.remote.operation.FindUserByNameOperation"/>
+    <classEntry path="org.flashmonkey.service.remote.operation.LoginOperation"/>
+    <classEntry path="org.flashmonkey.service.remote.operation.RegisterOperation"/>
+    <classEntry path="org.flashmonkey.controller.command.LoginCommand"/>
+    <classEntry path="org.flashmonkey.controller.command.GetAuthenticationCommand"/>
+    <classEntry path="org.flashmonkey.controller.command.LogoutCommand"/>
+    <classEntry path="org.flashmonkey.controller.command.FindLoggedInUserCommand"/>
+    <classEntry path="org.flashmonkey.controller.command.RegisterCommand"/>
+    <classEntry path="org.flashmonkey.controller.signal.FindLoggedInUser"/>
+    <classEntry path="org.flashmonkey.controller.signal.GetAuthentication"/>
+    <classEntry path="org.flashmonkey.controller.signal.Register"/>
+    <classEntry path="org.flashmonkey.controller.signal.Logout"/>
+    <classEntry path="org.flashmonkey.controller.signal.Login"/>
+    <classEntry path="org.flashmonkey.view.api.ILoginComponent"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
