@@ -1,15 +1,17 @@
 package org.flashmonkey.model.api
 {
+	import mx.collections.IList;
+
 	[Bindable] public interface IUser
 	{
 		function get id():int;
 		function set id(value:int):void;
 		
-		function get firstName():String;
-		function set firstName(value:String):void;
+		function get createdAt():Date;
+		function set createdAt(value:Date):void;
 		
-		function get lastName():String;
-		function set lastName(value:String):void;
+		function get lastLogin():Date;
+		function set lastLogin(value:Date):void;
 		
 		function get username():String;
 		function set username(value:String):void;
@@ -20,16 +22,15 @@ package org.flashmonkey.model.api
 		function get password():String;
 		function set password(value:String):void;
 		
-		function get confirmPassword():String;
-		function set confirmPassword(value:String):void;
+		function get roles():IList;
+		function set roles(value:IList):void;
 		
-		function get dob():Date;
-		function set dob(value:Date):void;
+		function get userType():String;
+		function set userType(value:String):void;
 		
-		function get authorities():Array;
-		function set authorities(value:Array):void;
+		function get isAdmin():Boolean;
+		function set isAdmin(value:Boolean):void;
 		
-		function get active():Boolean;
-		function set active(value:Boolean):void;
+		function hasRole(role:RoleEnum):Boolean;
 	}
 }

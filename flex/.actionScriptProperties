@@ -15,6 +15,7 @@
       <libraryPathEntry kind="3" linkType="1" path="/Users/admin/.m2/repository/org/robotlegs/robotlegs-framework/1.4.0/robotlegs-framework-1.4.0.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="/Users/admin/.m2/repository/org/osflash/as3-signals/0.8/as3-signals-0.8.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="/Users/admin/.m2/repository/org/flashmonkey/operations-lib/1.1.1/operations-lib-1.1.1.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/Users/admin/.m2/repository/org/as3commons/as3commons-lang/0.3.2/as3commons-lang-0.3.2.swc" useDefaultLinkType="false"/>
     </libraryPath>
     <sourceAttachmentPath/>
   </compiler>

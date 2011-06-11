@@ -8,7 +8,6 @@
     <classEntry path="org.flashmonkey.model.impl.UserModel"/>
     <classEntry path="org.flashmonkey.service.remote.RemoteUserService"/>
     <classEntry path="org.flashmonkey.service.remote.operation.GetAuthenticationOperation"/>
-    <classEntry path="org.flashmonkey.service.remote.operation.RemoteObjectOperation"/>
     <classEntry path="org.flashmonkey.service.remote.operation.LogoutOperation"/>
     <classEntry path="org.flashmonkey.service.remote.operation.FindUserByNameOperation"/>
     <classEntry path="org.flashmonkey.service.remote.operation.LoginOperation"/>
@@ -24,6 +23,22 @@
     <classEntry path="org.flashmonkey.controller.signal.Logout"/>
     <classEntry path="org.flashmonkey.controller.signal.Login"/>
     <classEntry path="org.flashmonkey.view.api.ILoginComponent"/>
+    <classEntry path="org.flashmonkey.model.api.IDestinationHelper"/>
+    <classEntry path="org.flashmonkey.model.api.IRole"/>
+    <classEntry path="org.flashmonkey.model.impl.Role"/>
+    <classEntry path="org.flashmonkey.model.api.RoleEnum"/>
+    <classEntry path="org.flashmonkey.controller.signal.FindUsers"/>
+    <classEntry path="org.flashmonkey.controller.command.FindUsersCommand"/>
+    <classEntry path="org.flashmonkey.service.remote.operation.FindAllOperation"/>
+    <classEntry path="org.flashmonkey.service.remote.operation.DestroyUserOperation"/>
+    <classEntry path="org.flashmonkey.model.api.LoginState"/>
+    <classEntry path="org.flashmonkey.controller.signal.DeleteUser"/>
+    <classEntry path="org.flashmonkey.controller.command.DeleteUserCommand"/>
+    <classEntry path="org.flashmonkey.controller.command.UpdateUserCommand"/>
+    <classEntry path="org.flashmonkey.controller.signal.UpdateUser"/>
+    <classEntry path="org.flashmonkey.service.remote.operation.UpdateUserOperation"/>
+    <classEntry path="org.flashmonkey.model.api.ILoginErrorHandler"/>
+    <classEntry path="org.flashmonkey.model.impl.AlertLoginErrorHandler"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

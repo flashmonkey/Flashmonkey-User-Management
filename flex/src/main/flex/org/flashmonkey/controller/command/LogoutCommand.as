@@ -5,6 +5,7 @@ package org.flashmonkey.controller.command
 	import org.flashmonkey.controller.signal.ChangeLocation;
 	import org.flashmonkey.model.Location;
 	import org.flashmonkey.model.api.IUserModel;
+	import org.flashmonkey.model.api.LoginState;
 	import org.flashmonkey.operations.service.IOperation;
 	import org.flashmonkey.service.IUserService;
 	import org.robotlegs.mvcs.SignalCommand;
@@ -24,6 +25,8 @@ package org.flashmonkey.controller.command
 		
 		public override function execute():void
 		{
+			model.status.value = LoginState.LOGGING_OUT;
+			
 			service.logout()
 				.addCompleteListener(onLogoutComplete)
 				.addErrorListener(onLogoutError)
@@ -33,6 +36,8 @@ package org.flashmonkey.controller.command
 		private function onLogoutComplete(o:IOperation):void 
 		{
 			model.user.value = null;
+			
+			model.status.value = LoginState.LOGGED_OUT;
 			
 			changeLocation.dispatch(Location.LOGIN);
 		}

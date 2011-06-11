@@ -2,10 +2,10 @@ package org.flashmonkey.controller.command
 {
 	import mx.controls.Alert;
 	
-	import org.flashmonkey.controller.signal.ChangeLocation;
-	import org.flashmonkey.model.Location;
+	import org.flashmonkey.model.api.IDestinationHelper;
 	import org.flashmonkey.model.api.IUser;
 	import org.flashmonkey.model.api.IUserModel;
+	import org.flashmonkey.model.api.LoginState;
 	import org.flashmonkey.operations.service.IOperation;
 	import org.flashmonkey.service.IUserService;
 	import org.robotlegs.mvcs.SignalCommand;
@@ -16,9 +16,9 @@ package org.flashmonkey.controller.command
 		
 		[Inject] public var service:IUserService;
 		
-		[Inject] public var model:IUserModel;
+		[Inject] public var helper:IDestinationHelper;
 		
-		[Inject] public var changeLocation:ChangeLocation;
+		[Inject] public var model:IUserModel;
 		
 		public function FindLoggedInUserCommand()
 		{
@@ -35,14 +35,17 @@ package org.flashmonkey.controller.command
 		
 		private function onFindUserComplete(o:IOperation):void 
 		{
-			model.user.value = o.result as IUser;
-			trace("found user -- switching to dashboard");
-			changeLocation.dispatch(Location.DASHBOARD);
+			var user:IUser = o.result as IUser;
+			model.user.value = user;
+			
+			model.status.value = LoginState.LOGGED_IN;
+			
+			helper.onLogin(user);
 		}
 		
 		private function onFindUserError(o:IOperation):void 
 		{
-			Alert.show("Problem", o.error);
+			Alert.show(o.error, "Problem");
 		}
 	}
 }

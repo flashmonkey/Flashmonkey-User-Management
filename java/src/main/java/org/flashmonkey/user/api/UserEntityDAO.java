@@ -14,7 +14,7 @@ public interface UserEntityDAO {
     
     UserEntity update(UserEntity user);
 
-    UserEntity destroy(Integer id);
+    UserEntity destroy(int id);
     
     List<UserEntity> index();
 }

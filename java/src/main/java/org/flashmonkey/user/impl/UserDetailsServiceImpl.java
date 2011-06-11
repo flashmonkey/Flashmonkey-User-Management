@@ -16,9 +16,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private static Logger log = Logger.getLogger(UserDetailsServiceImpl.class);
     
-	@Autowired private UserEntityDAO dao;
-	
-	@Autowired private Assembler assembler;
+	@Autowired 
+	private UserEntityDAO dao;
 	
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
@@ -29,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
          if (userEntity == null)
               throw new UsernameNotFoundException("user not found");
 
-        return  assembler.buildUserFromUserEntity(userEntity);
+        return  userEntity;
 
 	}
 

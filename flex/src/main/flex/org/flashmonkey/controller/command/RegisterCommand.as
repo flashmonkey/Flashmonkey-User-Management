@@ -20,7 +20,6 @@ package org.flashmonkey.controller.command
 		
 		public override function execute():void
 		{
-			trace("registering " + user.username);
 			service.register(user)
 				.addCompleteListener(onRegisterComplete)
 				.addErrorListener(onRegisterError)

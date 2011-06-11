@@ -1,9 +1,11 @@
 package org.flashmonkey.user.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.flashmonkey.user.api.UserEntityDAO;
+import org.flashmonkey.user.domain.RoleEntity;
 import org.flashmonkey.user.domain.UserEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -17,12 +19,19 @@ public class UserEntityDAOImpl implements UserEntityDAO {
     private SessionFactory sessionFactory;
 
     public UserEntity register(UserEntity user) {
+    	user.setCreatedAt(new Date());
         sessionFactory.getCurrentSession().save(user);
         return user;
     }
 
     public UserEntity findByName(String username) {
-    	return (UserEntity) sessionFactory.getCurrentSession().createCriteria(UserEntity.class).add(Restrictions.eq( "username", username ) ).uniqueResult();
+        UserEntity user = (UserEntity) sessionFactory.getCurrentSession().createCriteria(UserEntity.class).add(Restrictions.eq( "username", username ) ).uniqueResult();
+    	log.debug("Finding user: " + user);
+        for (RoleEntity role : user.getRoles()) {
+            log.debug(role.getName());
+        }
+        
+        return user;
     }
 
     public UserEntity findById(Integer id) {
@@ -42,7 +51,7 @@ public class UserEntityDAOImpl implements UserEntityDAO {
     	return list;
     }
     
-    public UserEntity destroy(Integer id) {
+    public UserEntity destroy(int id) {
         UserEntity user = (UserEntity) sessionFactory.getCurrentSession().load(UserEntity.class, id);
         if (null != user) {
             sessionFactory.getCurrentSession().delete(user);

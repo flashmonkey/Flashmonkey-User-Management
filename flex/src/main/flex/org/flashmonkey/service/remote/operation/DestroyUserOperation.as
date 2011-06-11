@@ -3,22 +3,23 @@ package org.flashmonkey.service.remote.operation
 	import mx.rpc.AsyncToken;
 	import mx.rpc.remoting.RemoteObject;
 	
+	import org.flashmonkey.model.api.IUser;
 	import org.flashmonkey.service.operation.RemoteObjectOperation;
 	
-	public class FindUserByNameOperation extends RemoteObjectOperation
+	public class DestroyUserOperation extends RemoteObjectOperation
 	{
-		private var _username:String;
+		private var _user:IUser;
 		
 		protected override function get token():AsyncToken
 		{
-			return remoteObject.findByName(_username);
+			return remoteObject.destroy(_user);
 		}
 		
-		public function FindUserByNameOperation(remoteObject:RemoteObject, username:String)
+		public function DestroyUserOperation(remoteObject:RemoteObject, user:IUser)
 		{
 			super(remoteObject);
 			
-			_username = username;
+			_user = user;
 		}
 	}
 }

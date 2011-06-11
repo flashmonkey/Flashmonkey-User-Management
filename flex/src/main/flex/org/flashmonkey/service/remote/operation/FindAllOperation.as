@@ -5,20 +5,16 @@ package org.flashmonkey.service.remote.operation
 	
 	import org.flashmonkey.service.operation.RemoteObjectOperation;
 	
-	public class FindUserByNameOperation extends RemoteObjectOperation
+	public class FindAllOperation extends RemoteObjectOperation
 	{
-		private var _username:String;
-		
 		protected override function get token():AsyncToken
 		{
-			return remoteObject.findByName(_username);
+			return remoteObject.findAll();
 		}
 		
-		public function FindUserByNameOperation(remoteObject:RemoteObject, username:String)
+		public function FindAllOperation(remoteObject:RemoteObject)
 		{
 			super(remoteObject);
-			
-			_username = username;
 		}
 	}
 }

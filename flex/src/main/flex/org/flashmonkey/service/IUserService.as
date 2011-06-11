@@ -14,5 +14,11 @@ package org.flashmonkey.service
 		function logout():IOperation;
 		
 		function findUserByName(username:String):IOperation;
+		
+		function findAll():IOperation;
+		
+		function update(user:IUser):IOperation;
+		
+		function destroy(user:IUser):IOperation;
 	}
 }

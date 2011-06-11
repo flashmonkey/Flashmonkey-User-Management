@@ -11,4 +11,8 @@ public interface UserService {
 	UserEntity findByName(String username);
 	
 	UserEntity register(UserEntity user);
+	
+	UserEntity destroy(UserEntity user);
+	
+	UserEntity update(UserEntity user);
 }

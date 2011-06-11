@@ -1,6 +1,11 @@
 package org.flashmonkey.model.impl
 {
+	import mx.collections.ArrayCollection;
+	import mx.collections.IList;
+	import mx.messaging.AbstractConsumer;
+	
 	import org.flashmonkey.model.api.IUser;
+	import org.flashmonkey.model.api.RoleEnum;
 
 	[RemoteClass(alias="org.flashmonkey.user.domain.UserEntity")]
 	[Bindable]
@@ -17,26 +22,26 @@ package org.flashmonkey.model.impl
 			_id = value;
 		}
 		
-		private var _firstName:String;
+		private var _createdAt:Date;
 		
-		public function get firstName():String
+		public function get createdAt():Date
 		{
-			return _firstName;
+			return _createdAt;
 		}
-		public function set firstName(value:String):void
+		public function set createdAt(value:Date):void
 		{
-			_firstName = value;
+			_createdAt = value;
 		}
 		
-		private var _lastName:String;
+		private var _lastLogin:Date;
 		
-		public function get lastName():String
+		public function get lastLogin():Date
 		{
-			return _lastName;
+			return _lastLogin;
 		}
-		public function set lastName(value:String):void
+		public function set lastLogin(value:Date):void
 		{
-			_lastName = value;
+			_lastLogin;
 		}
 		
 		private var _username:String = "";
@@ -72,67 +77,52 @@ package org.flashmonkey.model.impl
 			_password = value;
 		}
 		
-		private var _confirmPassword:String;
+		private var _roles:IList = new ArrayCollection();
 		
-		public function get confirmPassword():String
+		public function get roles():IList
 		{
-			return _confirmPassword;
+			return _roles;
 		}
-		public function set confirmPassword(value:String):void
+		public function set roles(value:IList):void 
 		{
-			_confirmPassword = value;
-		}
-		
-		private var _dob:Date;
-		
-		public function get dob():Date
-		{
-			return _dob;
-		}
-		public function set dob(value:Date):void
-		{
-			_dob = value;
+			_roles = value;
 		}
 		
-		private var _authorities:Array = [];
+		private var _userType:String;
 		
-		public function get authorities():Array
+		public function get userType():String
 		{
-			return _authorities;
+			return _userType;
 		}
-		public function set authorities(value:Array):void 
+		public function set userType(value:String):void
 		{
-			_authorities = value;
+			_userType = value;
 		}
 		
-		private var _active:Boolean = true;
-		
-		public function get active():Boolean
+		public function get isAdmin():Boolean
 		{
-			return _active;
+			return hasRole(RoleEnum.ROLE_ADMIN);
 		}
-		public function set active(value:Boolean):void
+		public function set isAdmin(value:Boolean):void
 		{
-			_active = value;
+			
 		}
 		
 		public function User()
 		{
 		}
 		
-		public static function from(obj:Object):User 
+		public function hasRole(role:RoleEnum):Boolean
 		{
-			if (obj)
+			for each (var o:Object in roles)
 			{
-				var user:User = new User();
-			
-				user.username = obj.name;
-				user.authorities = obj.authorities;
-				
-				return user;
+				if (o.name == role.toString())
+				{
+					return true;
+				}
 			}
 			
-			return null;
+			return false;
 		}
 	}
 }

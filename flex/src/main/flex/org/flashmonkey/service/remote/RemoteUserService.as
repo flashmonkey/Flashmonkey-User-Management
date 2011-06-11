@@ -5,11 +5,14 @@ package org.flashmonkey.service.remote
 	import org.flashmonkey.model.api.IUser;
 	import org.flashmonkey.operations.service.IOperation;
 	import org.flashmonkey.service.IUserService;
+	import org.flashmonkey.service.remote.operation.DestroyUserOperation;
+	import org.flashmonkey.service.remote.operation.FindAllOperation;
 	import org.flashmonkey.service.remote.operation.FindUserByNameOperation;
 	import org.flashmonkey.service.remote.operation.GetAuthenticationOperation;
 	import org.flashmonkey.service.remote.operation.LoginOperation;
 	import org.flashmonkey.service.remote.operation.LogoutOperation;
 	import org.flashmonkey.service.remote.operation.RegisterOperation;
+	import org.flashmonkey.service.remote.operation.UpdateUserOperation;
 	
 	public class RemoteUserService implements IUserService
 	{
@@ -44,6 +47,21 @@ package org.flashmonkey.service.remote
 		public function findUserByName(username:String):IOperation
 		{
 			return new FindUserByNameOperation(_userService, username);
+		}
+		
+		public function findAll():IOperation
+		{
+			return new FindAllOperation(_userService);
+		}
+		
+		public function update(user:IUser):IOperation
+		{
+			return new UpdateUserOperation(_userService, user);
+		}
+		
+		public function destroy(user:IUser):IOperation
+		{
+			return new DestroyUserOperation(_userService, user);
 		}
 	}
 }

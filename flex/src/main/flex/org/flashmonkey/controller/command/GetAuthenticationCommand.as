@@ -3,6 +3,8 @@ package org.flashmonkey.controller.command
 	import mx.controls.Alert;
 	
 	import org.flashmonkey.controller.signal.FindLoggedInUser;
+	import org.flashmonkey.model.api.IUserModel;
+	import org.flashmonkey.model.api.LoginState;
 	import org.flashmonkey.operations.service.IOperation;
 	import org.flashmonkey.service.IUserService;
 	import org.robotlegs.mvcs.SignalCommand;
@@ -10,6 +12,8 @@ package org.flashmonkey.controller.command
 	public class GetAuthenticationCommand extends SignalCommand
 	{
 		[Inject] public var service:IUserService;
+		
+		[Inject] public var model:IUserModel;
 		
 		[Inject] public var findLoggedInUser:FindLoggedInUser;
 		
@@ -30,9 +34,13 @@ package org.flashmonkey.controller.command
 		{
 			if (o.result != null)
 			{
-				trace("There's a logged in user '" + o.result.name + "' - finding their details");
+				model.status.value = LoginState.LOGGING_IN;
 				
 				findLoggedInUser.dispatch(o.result.name);
+			}
+			else
+			{
+				model.status.value = LoginState.LOGGED_OUT;
 			}
 		}
 		

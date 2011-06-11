@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired 
 	private UserEntityDAO dao;
 
-	@Transactional(readOnly = true)
+	@Transactional(readOnly=true)
 	public List<UserEntity> findAll() {
 		return dao.index();
 	}
@@ -31,5 +31,15 @@ public class UserServiceImpl implements UserService {
 	@Transactional(readOnly=true)
 	public UserEntity findByName(String username) {
 	    return dao.findByName(username);
+	}
+
+	@Transactional
+	public UserEntity destroy(UserEntity user) {
+		return dao.destroy(user.getId());
+	}
+
+	@Transactional
+	public UserEntity update(UserEntity user) {
+		return dao.update(user);
 	}
 }
